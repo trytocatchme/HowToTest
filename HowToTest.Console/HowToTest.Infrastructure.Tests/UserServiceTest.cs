@@ -7,6 +7,9 @@ using Xunit;
 using HowToTest.Infrastructure.Services;
 using System.Threading.Tasks;
 using HowToTest.Infrastructure.Tests.Extensions;
+using System.Threading;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 
 namespace HowToTest.Infrastructure.Tests
 {
@@ -35,6 +38,75 @@ namespace HowToTest.Infrastructure.Tests
 
             // Assert
             Assert.Empty(result);
+        }
+
+        [Fact]
+        public async Task AddAsync_EmptyCollection_AddedItem()
+        {
+            // Arrange
+            var emptyCollection = new List<User>();
+            var testObject = new User { Id = 1, Age = 1 };
+            var dbSetMock = new Mock<DbSet<User>>();
+
+            var context = new Mock<ApplicationContext>();
+            context
+                .Setup(x => x.AddAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()))
+                .Callback((User model, CancellationToken token) => { emptyCollection.Add(model); })
+                .Returns((User model, CancellationToken token) => new ValueTask<EntityEntry<User>>());
+
+            // Act
+            var userService = new UserService(context.Object);
+            await userService.AddAsync(testObject);
+
+            // Assert
+            Assert.NotEmpty(emptyCollection);
+        }
+
+        [Fact]
+        public async Task AddOnlyIfAdultAsync_EmptyCollection_NotAddedItem()
+        {
+            // Arrange
+            var emptyCollection = new List<User>();
+            var testObject = new User { Id = 1, Age = 1 };
+            var dbSetMock = new Mock<DbSet<User>>();
+
+            var context = new Mock<ApplicationContext>();
+            context
+                .Setup(x => x.AddAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()))
+                .Callback((User model, CancellationToken token) => { emptyCollection.Add(model); })
+                .Returns((User model, CancellationToken token) => new ValueTask<EntityEntry<User>>());
+
+            var userService = new UserService(context.Object);
+
+            // Act
+            Task act() => userService.AddOnlyIfAdultAsync(testObject);
+
+            // Assert
+            await Assert.ThrowsAsync<Exception>(act);
+        }
+
+
+        [Fact]
+        public async Task AddOnlyIfAdultAsync_EmptyCollection_AddedItem()
+        {
+            // Arrange
+            var emptyCollection = new List<User>();
+            var testObject = new User { Id = 1, Age = 20 };
+            var dbSetMock = new Mock<DbSet<User>>();
+
+            var context = new Mock<ApplicationContext>();
+            context
+                .Setup(x => x.AddAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()))
+                .Callback((User model, CancellationToken token) => { emptyCollection.Add(model); })
+                .Returns((User model, CancellationToken token) => new ValueTask<EntityEntry<User>>());
+
+            var userService = new UserService(context.Object);
+
+            // Act
+            await userService.AddOnlyIfAdultAsync(testObject);
+
+            // Assert
+            Assert.NotEmpty(emptyCollection);
         }
     }
 }

@@ -8,5 +8,7 @@ namespace HowToTest.Infrastructure.Services
     {
         Task<IEnumerable<User>> GetAdultUsersAsync();
         Task<IEnumerable<User>> GetAllAsync();
+        Task<int> AddAsync(User user);
+        Task<int> AddOnlyIfAdultAsync(User user);
     }
 }
