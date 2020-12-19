@@ -108,5 +108,29 @@ namespace HowToTest.Infrastructure.Tests
             // Assert
             Assert.NotEmpty(emptyCollection);
         }
+
+        [Fact]
+        public async Task Remove_TestClassObjectPassed_ProperMethodCalled()
+        {
+            // Arrange
+            var testObject = new User { Id = 1, Age = 20 };
+            var emptyCollection = new List<User>() { testObject };
+            
+            var dbSetMock = new Mock<DbSet<User>>();
+
+            var context = new Mock<ApplicationContext>();
+            context
+                .Setup(x => x.Remove(It.IsAny<User>()))
+                .Callback((User model) => { emptyCollection.Remove(model); })
+                .Returns((User model) => null);
+
+            var userService = new UserService(context.Object);
+
+            // Act
+            await userService.RemoveAsync(testObject);
+
+            // Assert
+            Assert.Empty(emptyCollection);
+        }
     }
 }

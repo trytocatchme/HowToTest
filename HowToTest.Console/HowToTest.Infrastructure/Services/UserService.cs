@@ -46,5 +46,10 @@ namespace HowToTest.Infrastructure.Services
             return user.Id;
         }
 
+        public async Task RemoveAsync(User user)
+        {
+            _context.Remove(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

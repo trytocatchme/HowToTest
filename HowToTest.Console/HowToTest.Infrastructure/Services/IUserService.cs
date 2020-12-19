@@ -10,5 +10,6 @@ namespace HowToTest.Infrastructure.Services
         Task<IEnumerable<User>> GetAllAsync();
         Task<int> AddAsync(User user);
         Task<int> AddOnlyIfAdultAsync(User user);
+        Task RemoveAsync(User user);
     }
 }
