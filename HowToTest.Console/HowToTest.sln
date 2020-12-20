@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToTest.Console", "HowToTest.Console\HowToTest.Console.csproj", "{1474129C-DBB7-4E3C-81E7-12AE8E6BE50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToTest.Console", "HowToTest.Console\HowToTest.Console.csproj", "{1474129C-DBB7-4E3C-81E7-12AE8E6BE50F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToTest.Infrastructure", "HowToTest.Infrastructure\HowToTest.Infrastructure.csproj", "{7458606A-B7C6-4AB0-931A-BF84348D3647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToTest.Infrastructure", "HowToTest.Infrastructure\HowToTest.Infrastructure.csproj", "{7458606A-B7C6-4AB0-931A-BF84348D3647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToTest.Web", "HowToTest.Web\HowToTest.Web.csproj", "{9755A083-BCE4-47F4-B7B7-C12882CF6DD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToTest.Web", "HowToTest.Web\HowToTest.Web.csproj", "{9755A083-BCE4-47F4-B7B7-C12882CF6DD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToTest.Infrastructure.Tests", "HowToTest.Infrastructure.Tests\HowToTest.Infrastructure.Tests.csproj", "{C8E8C2A5-8C04-45A3-A58C-B6B8318F341E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToTest.Infrastructure.Tests", "HowToTest.Infrastructure.Tests\HowToTest.Infrastructure.Tests.csproj", "{C8E8C2A5-8C04-45A3-A58C-B6B8318F341E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToTest.Web.Tests", "HowToTest.Web.Tests\HowToTest.Web.Tests.csproj", "{2BA6CCA8-51F9-4EA4-B753-AFF55EAFCD1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C8E8C2A5-8C04-45A3-A58C-B6B8318F341E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8E8C2A5-8C04-45A3-A58C-B6B8318F341E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8E8C2A5-8C04-45A3-A58C-B6B8318F341E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA6CCA8-51F9-4EA4-B753-AFF55EAFCD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA6CCA8-51F9-4EA4-B753-AFF55EAFCD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA6CCA8-51F9-4EA4-B753-AFF55EAFCD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA6CCA8-51F9-4EA4-B753-AFF55EAFCD1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
